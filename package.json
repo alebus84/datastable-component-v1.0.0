@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "autoprefixer": "postcss src/css/DatasTable.css --use autoprefixer -d src/prefixedCss"
   },
   "eslintConfig": {
     "extends": [
@@ -30,14 +31,10 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 4 versions"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 4 versions"
     ]
   }
 }
