@@ -1,0 +1,179 @@
+#wrapper-of-datas-table-component,
+#wrapper-of-datas-table-component * {
+    box-sizing: border-box;
+}
+
+#wrapper-of-datas-table-component {
+    background-color: rgb(255, 255, 255);
+    overflow-x: auto;
+}
+
+#wrapper-of-datas-table-component table {
+    table-layout: fixed;
+    white-space: nowrap;
+    border-collapse: collapse;
+}
+
+#wrapper-of-datas-table-component caption {
+    font-weight: bolder;
+    color: rgb(0, 0, 100);
+    font-size: 2em;
+    padding: 20px;
+}
+
+#wrapper-of-datas-table-component thead tr,
+#wrapper-of-datas-table-component tbody tr {
+    border-bottom: solid rgb(0, 0, 100) 1px;
+}
+
+#wrapper-of-datas-table-component th,
+#wrapper-of-datas-table-component td {
+    vertical-align: center;
+}
+
+#wrapper-of-datas-table-component th {
+    position: relative;
+    padding: 0 5px 0 0;
+    color: rgb(0, 0, 100);
+    font-size: 1.25em;
+}
+
+#wrapper-of-datas-table-component thead tr > :nth-child(2n+1),
+#wrapper-of-datas-table-component tbody tr > :nth-child(2n+1) {
+    background-color: rgb(240, 240, 250);
+}
+
+#wrapper-of-datas-table-component thead tr > :nth-child(2n+0),
+#wrapper-of-datas-table-component tbody tr > :nth-child(2n+0) {
+    background-color: rgb(255, 255, 255);
+}
+
+#wrapper-of-datas-table-component tbody td {
+    position: relative;
+    padding: 0 5px 0 0;
+}
+
+#wrapper-of-datas-table-component .cell-content {
+    padding: 5px;
+}
+
+#wrapper-of-datas-table-component th .cell-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+#wrapper-of-datas-table-component th .cell-content .ascending,
+#wrapper-of-datas-table-component th .cell-content .descending {
+    background-color: rgb(0, 0, 100);
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    cursor: pointer;
+    border: none;
+    transform: scale(1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: transform, box-shadow;
+}
+
+#wrapper-of-datas-table-component th .cell-content .ascending {
+    background-image: url("../img/ascendingSort.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#wrapper-of-datas-table-component th .cell-content .descending {
+    background-image: url("../img/descendingSort.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#wrapper-of-datas-table-component th .cell-content .ascending:hover,
+#wrapper-of-datas-table-component th .cell-content .descending:hover {
+    transform: scale(1.1);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+#wrapper-of-datas-table-component th .cell-content span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#wrapper-of-datas-table-component td .cell-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#wrapper-of-datas-table-component .resizer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    user-select: none;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: background-color;
+}
+
+#wrapper-of-datas-table-component .resizer:hover {
+    background-color: rgb(0, 0, 100);
+}
+
+#wrapper-of-datas-table-component .resizing {
+    background-color: rgb(0, 0, 100);
+}
+
+#wrapper-of-datas-table-component .wrapper-of-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+#wrapper-of-datas-table-component .wrapper-of-pagination p {
+    margin: 0;
+}
+
+#wrapper-of-datas-table-component .wrapper-of-pagination ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper-of-datas-table-component .wrapper-of-pagination li {
+    padding: 5px;
+    opacity: 0.25;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: background-color, opacity;
+}
+
+#wrapper-of-datas-table-component .wrapper-of-pagination li:hover {
+    background-color: rgb(0, 0, 100);
+    color: rgb(255, 255, 255);
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+#wrapper-of-datas-table-component .wrapper-of-pagination li.current-page {
+    background-color: rgb(0, 0, 100);
+    color: rgb(255, 255, 255);
+    opacity: 1;
+    cursor: initial;
+    font-weight: bold;
+}
