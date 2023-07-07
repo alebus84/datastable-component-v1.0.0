@@ -5,7 +5,7 @@
  */
 
 import React, {ReactElement, useEffect, useRef, useState} from 'react';
-import '../prefixedCss/DatasTable.css';
+import '../prefixedStyles/DatasTable.css';
 
 function DatasTable(props: {
 
