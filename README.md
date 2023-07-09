@@ -3,12 +3,12 @@
 Composant React.js servant à afficher des données sous forme de tableau HTML.
 
 Environnement :
-- Windows 10 Famille
 - IntelliJ IDEA 2023.1.3
 - React.js 18.2.0
 - TypeScript 4.9.5
 
 Navigateurs testés :
+- Microsoft Edge 114.0.1823.67
 - Mozilla Firefox 115.0
 - Google Chrome 114.0.5735.199
 
