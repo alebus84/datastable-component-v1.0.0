@@ -25,7 +25,6 @@ function App(): ReactElement {
      * Behaviours :
      */
 
-    // Récupération des données depuis la BDD :
     const getDatas: () => void = (): void => {
         const datasSource: object[] = [
             {id: 1, civility: "M", firstName: "Emmanuel", lastName: "MACRON", email: "emmanuel.macron@mail.fr"},
@@ -64,55 +63,7 @@ function App(): ReactElement {
         setDatas(structureDatas(datasSource));
     };
 
-    // Formatage des données avant transmission au composant :
     const structureDatas: (datasToStructure: object[]) => {headers: object, rows: object[]} = (datasToStructure: object[]): {headers: object, rows: object[]} => {
-
-        /*
-        Le schéma structurel des données à transmettre au composant est le suivant :
-
-        // Un objet global à transmettre au composant.
-        {
-
-            // Un objet qui va contenir des paramètres nécessaires au <thead> de la <table>.
-            headers: {
-
-                // Un tableau qui va contenir une liste de nombres qui vont définir la largeur par défaut des colonnes.
-                sizes: [number, number, number...],
-
-                // Un objet qui va contenir une liste de paires "clé: valeur" qui vont définir les titres des colonnes.
-                // La clé doit être identique à celle de la BDD.
-                // La valeur doit être au format chaîne de caractères.
-                titles: {key: value, key: value, key: value...}
-
-            },
-
-            // Un tableau qui va contenir une liste d'objets correspondant aux données à afficher dans le <tbody> de la <table>.
-            rows: [
-
-                // Schéma structurel de chaque objet :
-                {
-
-                    // Une paire "clé: valeur" qui va définir l'index de chaque ligne à l'affichage.
-                    // Cet index doit être unique et au format nombre.
-                    // Je recommande d'y attribuer l'index provenant de la BDD.
-                    // Cet index unique permettra à React.js de détecter la moindre modification et donc d'actualiser automatiquement le composant.
-                    rowIndex: number,
-
-                    // Un objet qui va contenir la ligne de la BDD.
-                    // La donnée doit être celle de la BDD sans modification.
-                    // Les clés doivent être identiques à celles utilisées dans l'objet "titles".
-                    rowContent: {key: value, key: value, key: value...}
-
-                },
-
-                ...
-
-            ]
-
-        }
-
-        */
-
         const structuredDatas: {headers: object, rows: object[]} = {headers: [], rows: []};
         structuredDatas.headers = {
             sizes: [100, 200, 200, 300],

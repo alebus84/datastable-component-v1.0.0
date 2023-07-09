@@ -20,21 +20,17 @@ function DatasTable(props: {
     const [datas, setDatas]: [null | {headers: object, pages: object[]}, React.Dispatch<React.SetStateAction<null | {headers: object, pages: object[]}>>] = useState<null | {headers: object, pages: object[]}>(null);
     const [columnsSizes, setColumnsSizes]: [null | number[], React.Dispatch<React.SetStateAction<null | number[]>>] = useState<null | number[]>(null);
     const [currentPage, setCurrentPage]: [number, React.Dispatch<React.SetStateAction<number>>] = useState<number>(0);
-    const document: React.RefObject<any> = useRef<any>(window);
     const wrapper: React.RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
     const table: React.RefObject<HTMLTableElement> = useRef<HTMLTableElement>(null);
     const headers: React.RefObject<HTMLTableCellElement[]> = useRef<HTMLTableCellElement[]>([]);
     const footer: React.RefObject<HTMLTableCellElement> = useRef<HTMLTableCellElement>(null);
+    const [refsAreReady, setRefsAreReady]: [boolean, React.Dispatch<React.SetStateAction<boolean>>] = useState<boolean>(false);
 
     /**
      * Hooks :
      */
 
     useEffect((): () => void => {
-        if (props.datas !== null) {
-            defineColumnsSizes(props.datas);
-            paginateDatas(props.datas);
-        }
         return (): void => {
             setDatas(null);
             setColumnsSizes(null);
@@ -56,27 +52,24 @@ function DatasTable(props: {
             headers.current !== null &&
             headers.current.length !== 0 &&
             footer.current !== null
-        ) defineElementsSizes();
+        ) setRefsAreReady(true);
     });
 
     useEffect((): void => {
-        if (
-            columnsSizes !== null &&
-            document.current !== null
-        ) document.current.addEventListener("resize", defineElementsSizes);
-    });
+        if (refsAreReady) {
+            defineElementsSizes();
+        }
+    }, [refsAreReady]);
 
     /**
      * Behaviours :
      */
 
-    // Définition des tailles de colonnes par défaut :
     const defineColumnsSizes: (sizesToDefine: {headers: object; rows: object[]}) => void = (sizesToDefine: {headers: object; rows: object[]}): void => {
         const definedSizes: number[] = Object.entries(sizesToDefine.headers).filter(([key,]: [string, any],): boolean => key === "sizes")[0][1];
         setColumnsSizes(definedSizes);
     };
 
-    // Pagination des données :
     const paginateDatas: (datasToPaginate: {headers: object; rows: object[]}) => void = (datasToPaginate: {headers: object, rows: object[]}): void => {
         const paginatedDatas: {headers: object, pages: object[]} = {headers: datasToPaginate.headers, pages: []};
         const displayLimit: number = 10;
@@ -92,21 +85,11 @@ function DatasTable(props: {
         setDatas(paginatedDatas);
     };
 
-    // Définition des tailles de différents éléments du composant :
-    const defineElementsSizes: (event?: any) => void = (event: undefined | any = undefined): void => {
-        if (event !== undefined) event.preventDefault();
-        const wrapperToResize: HTMLDivElement = event !== undefined
-            ? event.target.document.querySelector("#wrapper-of-datas-table-component")
-            : wrapper.current;
-        const tableToResize: HTMLTableElement = event !== undefined
-            ? event.target.document.querySelector("#wrapper-of-datas-table-component table")
-            : table.current;
-        const headersToResize: HTMLTableCellElement[] = event !== undefined
-            ? event.target.document.querySelector("#wrapper-of-datas-table-component").querySelectorAll("th")
-            : headers.current;
-        const footerToResize: HTMLTableCellElement = event !== undefined
-            ? event.target.document.querySelector("#wrapper-of-datas-table-component").querySelector("tfoot td")
-            : footer.current;
+    const defineElementsSizes: () => void = (): void => {
+        const wrapperToResize: HTMLDivElement = wrapper.current!;
+        const tableToResize: HTMLTableElement = table.current!;
+        const headersToResize: HTMLTableCellElement[] = headers.current!;
+        const footerToResize: HTMLTableCellElement = footer.current!;
         const columnsSizesCopy: number[] = columnsSizes!;
         let sum: number = 0;
         columnsSizesCopy.forEach((size: number): number => sum += size);
@@ -121,7 +104,6 @@ function DatasTable(props: {
         footerToResize.setAttribute("colspan", `${headersToResize.length}`);
     };
 
-    // Fonctionnalité utilisateur de tri de colonne :
     const handleSortColumn: (event: any) => void = (event: any): void => {
         event.preventDefault();
         const headerOfSelectedColumn: HTMLTableCellElement = event.target.offsetParent;
@@ -158,7 +140,6 @@ function DatasTable(props: {
         button.setAttribute("class", `${direction === "ascending" ? "descending" : "ascending"}`);
     };
 
-    // Fonctionnalité utilisateur de redimensionnement de colonne :
     const handleResizeColumn: (event: any) => void = (event: any): void => {
         event.preventDefault();
         let columnsSizesCopy: number[] = columnsSizes!;
@@ -196,7 +177,6 @@ function DatasTable(props: {
         othersHeaders.forEach((header: HTMLTableCellElement): string => (header.style.width = `${header.clientWidth}px`));
     };
 
-    // Fonctionnalité utilisateur de changement de page :
     const handleChangePage: (event: any) => void = (event: any): void => {
         event.preventDefault();
         setCurrentPage(Number(event.target.textContent) - 1);
@@ -207,9 +187,9 @@ function DatasTable(props: {
      */
 
     return (
-        <div ref={wrapper} id="wrapper-of-datas-table-component">
+        <div ref={wrapper} id="wrapper-of-datastable-component">
             <table ref={table}>
-                <caption>Datas table component</caption>
+                <caption>Datastable component</caption>
                 {datas !== null && Object.entries(datas.headers).map(([key, titles]: [string, any], index: number): boolean | ReactElement => (key === "titles" &&
                 <thead key={index}>
                     <tr>{Object.entries(titles).map(([key, title]: [string, any], index: number): ReactElement => (
