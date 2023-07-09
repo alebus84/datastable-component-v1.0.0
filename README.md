@@ -13,7 +13,7 @@ Navigateurs testés :
 - Google Chrome 114.0.5735.199
 
 Ce composant possède les fonctionnalités automatiques suivantes :
-- Ajustement de la taille du tableau par rapport à la fenêtre du navigateur, au montage du composant, ainsi que lors du redimensionnement de la fenêtre du navigateur.
+- Ajustement de la taille du tableau par rapport à la fenêtre du navigateur au montage du composant.
 - Pagination des données d'après une limite d'affichage de lignes prédéfinie.
 
 Ce composant possède les fonctionnalités utilisateur suivantes :
