@@ -1,4 +1,4 @@
-# datas-table-component
+# datas-table-component v1.0.0
 
 Composant React.js servant à afficher des données sous forme de tableau HTML.
 
