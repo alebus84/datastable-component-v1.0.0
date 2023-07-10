@@ -1,4 +1,4 @@
-# datastable-component v1.0.0
+# Datastable component v1.0.0
 
 Composant React.js servant à afficher des données sous forme de tableau HTML.
 
@@ -6,6 +6,8 @@ Composant React.js servant à afficher des données sous forme de tableau HTML.
 
 Environnement :
 - IntelliJ IDEA 2023.1.3
+
+Stack technique :
 - React.js 18.2.0
 - TypeScript 4.9.5
 
