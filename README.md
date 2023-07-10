@@ -8,6 +8,8 @@ Environnement :
 - IntelliJ IDEA 2023.1.3
 
 Stack technique :
+- HTML5
+- CSS3
 - React.js 18.2.0
 - TypeScript 4.9.5
 
