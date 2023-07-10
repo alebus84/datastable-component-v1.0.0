@@ -1,5 +1,4 @@
 import React, {ReactElement, useEffect, useState} from 'react';
-import './App.css';
 import DatasTable from "./components/DatasTable";
 
 function App(): ReactElement {

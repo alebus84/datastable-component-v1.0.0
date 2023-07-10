@@ -1,6 +1,6 @@
 /**
  * Merci de laisser ce bloc de commentaires afin de respecter le travail de l'auteur.
- * Datas table component : créé par Alexandre DUBUS
+ * Datastable component : créé par Alexandre DUBUS
  * GitHub : https://github.com/alebus84
  */
 
