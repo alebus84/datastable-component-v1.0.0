@@ -1,5 +1,5 @@
 import React, {ReactElement, useEffect, useState} from 'react';
-import DatasTable from "./components/DatasTable";
+import Datastable from "./components/Datastable";
 
 function App(): ReactElement {
 
@@ -85,7 +85,7 @@ function App(): ReactElement {
 
     return (
         <div className="App">
-            <DatasTable datas={datas}/>
+            <Datastable datas={datas}/>
         </div>
     );
 

@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "autoprefixer": "postcss src/css/DatasTable.css --use autoprefixer -d src/prefixedStyles"
+    "autoprefixer": "postcss src/css/datastable.css --use autoprefixer -d src/prefixedStyles"
   },
   "eslintConfig": {
     "extends": [
