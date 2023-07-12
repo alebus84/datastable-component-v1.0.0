@@ -2,7 +2,7 @@
 
 Composant React.js servant à afficher des données sous forme de tableau HTML.
 
-![image](https://github.com/alebus84/datastable-component/assets/132705913/18a3095c-5eaf-4a54-8d3a-8b78c9c15275)
+![image](https://github.com/alebus84/datastable-component-v1.0.0/assets/132705913/6dabb211-0db8-43ad-9e33-84f75e7c885e)
 
 Environnement :
 - IntelliJ IDEA 2023.1.3
